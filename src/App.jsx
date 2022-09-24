@@ -62,7 +62,7 @@ function App() {
   const fixList = (list, pList) => {
     list.forEach(element => {
       // reemplaza el elemento con un elemento de la lista secundaria
-      element = pList.find(element.id)
+      element = pList.find((x) => x.id === element.id)
       if (element.childs.length) {
         console.log(element.title + "has childs")
         fixList(element.childs, pList)
