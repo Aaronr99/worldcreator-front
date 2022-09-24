@@ -28,8 +28,7 @@ function Folder({ explorer }) {
                 </div>
 
                 <div className="collapse row g-0" id={explorer.title.replace(' ', '') + "det"}>
-                    <img className='col-2' src={'https://' + explorer.imageUrl} alt='' />
-
+                    <img className='col-2' src={explorer.imageUrl} alt='' />
                     <div className="card card-body col-10">
                         <p><small> {'Category: ' + explorer.category}</small></p>
                         <p><small> {"Date Added: " + explorer.dateAdded}</small></p>
