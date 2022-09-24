@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Collapse } from 'bootstrap'
 
 function Folder({ explorer }) {
-    function DeleteChar() {
-        axios.delete('https://worldcreator-api.herokuapp.com/worldDB/' + explorer.id).then(window.location.reload(false))
+    async function DeleteChar() {
+        await axios.delete('https://worldcreator-api.herokuapp.com/worldDB/' + explorer.id).then(window.location.reload(false))
 
     }
 
