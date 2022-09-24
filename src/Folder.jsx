@@ -4,7 +4,7 @@ import { Collapse } from 'bootstrap'
 
 function Folder({ explorer }) {
     function DeleteChar() {
-        axios.delete('https://localhost:50000/worldDB/' + explorer.id).then(res => console.log(res))
+        axios.delete('https://worldcreator-api.herokuapp.com/worldDB/' + explorer.id).then(res => console.log(res))
     }
 
     return (

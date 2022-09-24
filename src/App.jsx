@@ -41,7 +41,7 @@ function App() {
   }, [])
 
   const getAllElements = async () => {
-    await axios.get('https://localhost:50000/worldDB').then(res => {
+    await axios.get('https://worldcreator-api.herokuapp.com/worldDB').then(res => {
       mapParents(res.data)
       setAllElements(res.data)
     })
@@ -95,15 +95,15 @@ function App() {
       formData.append("image", image);
     }
     if (edit.current) {
-      console.log('https://localhost:50000/worldDB/' + toEdit)
-      axios.patch('https://localhost:50000/worldDB/' + toEdit, formData, {
+      console.log('https://worldcreator-api.herokuapp.com/worldDB/' + toEdit)
+      axios.patch('https://worldcreator-api.herokuapp.com/worldDB/' + toEdit, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       }).then(res => console.log(res.response))
     }
     else {
-      axios.post('https://localhost:50000/worldDB', formData, {
+      axios.post('https://worldcreator-api.herokuapp.com/worldDB', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
