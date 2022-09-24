@@ -100,14 +100,14 @@ function App() {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      }).then(res => console.log(res.response))
+      }).then(res => window.location.reload(false))
     }
     else {
       axios.post('https://worldcreator-api.herokuapp.com/worldDB', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      }).then(res => console.log(res.response))
+      }).then(res => window.location.reload(false))
     }
   }
 
