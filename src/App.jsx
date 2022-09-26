@@ -160,6 +160,15 @@ function App() {
                 }
               }} />
             </div>
+            <select
+              className="form-select" id='parent-selection'
+              value={toEdit} onChange={(e) => {
+                setToEdit(e.target.value)
+                loadOrUnloadValues(e.target.value)
+              }}>
+              <option value=''>no one to edit</option>
+              {allElements.map(x => <option key={x._id} value={x._id}> {x.title}  </option>)}
+            </select>
           </div>
 
           <select
