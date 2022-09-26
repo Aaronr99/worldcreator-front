@@ -8,15 +8,14 @@ function Folder({ explorer }) {
     const [reload, setReload] = useState(false)
 
     async function DeleteChar() {
+        if(explorer.id === 'mising'){
+            return
+        }
         await axios.delete('https://worldcreator-api.herokuapp.com/worldDB/' + explorer.id)
-            .then((res) => {
-                console.log(res)
-                setReload(true, () => {
-                    setReload(false)
-                })
-            }
-            )
-
+        .then(res => {
+            console.log(res)
+            setTimeout(window.location.reload(), 3000)
+        })
     }
 
     return (

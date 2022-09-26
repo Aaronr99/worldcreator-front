@@ -23,8 +23,6 @@ class WorldElement {
 
 function App() {
 
-  const [reload, setReload] = useState(false)
-
   const [allElements, setAllElements] = useState([])
   const [elements, setElements] = useState([])
 
@@ -82,6 +80,37 @@ function App() {
 
     fixList(filterList, parentList)
 
+    const noParentsList = []
+    parentList.forEach(element => {
+      if (element.parent === 'root') {
+        return
+      }
+      const parentFind = parentList.find(x => x.id === element.parent)
+      console.log(parentFind);
+      if (parentFind === undefined) {
+        console.log(element.title);
+        noParentsList.push(element)
+      }
+    });
+    console.log(noParentsList);
+    if (noParentsList !== undefined && noParentsList.length > 0) {
+      const misingRoot = new WorldElement({
+        _id: 'mising',
+        parent: '',
+        title: 'missing parent',
+        description: '',
+        imageUrl: '',
+        category: 'location',
+        dateAdded: '',
+        childs: [],
+      })
+      noParentsList.forEach(element => {
+        misingRoot.addChild(element)
+      });
+      console.log(misingRoot);
+      filterList.push(misingRoot)
+    }
+
     setElements(filterList)
   }
 
@@ -102,18 +131,14 @@ function App() {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      }).then(setReload(true, () => {
-        setReload(false)
-      }))
+      }).then(getAllElements)
     }
     else {
       axios.post('https://worldcreator-api.herokuapp.com/worldDB', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      }).then(setReload(true, () => {
-        setReload(false)
-      }))
+      }).then(getAllElements)
     }
   }
 
@@ -153,24 +178,24 @@ function App() {
           <div className="input-group mb-3">
             <div className="input-group-text">
               <input className="form-check-input mt-0" type="checkbox" value={edit}
-              data-bs-toggle="collapse" data-bs-target="#id-edit-selection"
-              onInput={(e) => {
-                edit.current = e.target.checked ? true : false
-                if (toEdit !== '') {
-                  loadOrUnloadValues(toEdit)
-                }
-              }} />
+                data-bs-toggle="collapse" data-bs-target="#id-edit-selection"
+                onInput={(e) => {
+                  edit.current = e.target.checked ? true : false
+                  if (toEdit !== '') {
+                    loadOrUnloadValues(toEdit)
+                  }
+                }} />
             </div>
-            <p className="container border shadow p-3 mb-5 bg-body rounded h6"> Edit a existing element </p>
+            <span class="input-group-text" id="basic-addon1">Edit an existing element</span>
           </div>
 
           <select
             className="form-select collapse" id='id-edit-selection'
-            value={toEdit} onChange={(e) => {
+            value={toEdit} required={edit.current}
+            onChange={(e) => {
               setToEdit(e.target.value)
               loadOrUnloadValues(e.target.value)
             }}>
-            <option value=''>no one to edit</option>
             {allElements.map(x => <option key={x._id} value={x._id}> {x.title}  </option>)}
           </select>
 
