@@ -150,7 +150,6 @@ function App() {
       <div className="col-4 border shadow p-3 mb-5 bg-body rounded">
         <p className="h2 text-center"> Input a new world element</p>
         <form>
-
           <div className="input-group mb-3">
             <div className="input-group-text">
               <input className="form-check-input mt-0" type="checkbox" value={edit} onInput={(e) => {
@@ -159,19 +158,17 @@ function App() {
                   loadOrUnloadValues(toEdit)
                 }
               }} />
-              <select
-                className="form-select" id='parent-selection'
-                value={toEdit} onChange={(e) => {
-                  setToEdit(e.target.value)
-                  loadOrUnloadValues(e.target.value)
-                }}>
-                <option value=''>no one to edit</option>
-                {allElements.map(x => <option key={x._id} value={x._id}> {x.title}  </option>)}
-              </select>
             </div>
+            <select
+              className="form-select" id='parent-selection'
+              value={toEdit} onChange={(e) => {
+                setToEdit(e.target.value)
+                loadOrUnloadValues(e.target.value)
+              }}>
+              <option value=''>no one to edit</option>
+              {allElements.map(x => <option key={x._id} value={x._id}> {x.title}  </option>)}
+            </select>
           </div>
-
-
 
           <div className="mb-3">
             <label htmlFor="textArea1" className="form-label h6"> Name </label>
