@@ -1,10 +1,19 @@
 import axios from 'axios';
 // eslint-disable-next-line 
 import { Collapse } from 'bootstrap'
+import { useState } from 'react';
 
 function Folder({ explorer }) {
+
+    const [reload, setReload] = useState(false)
+
     async function DeleteChar() {
-        await axios.delete('https://worldcreator-api.herokuapp.com/worldDB/' + explorer.id).then(window.location.reload(false))
+        await axios.delete('https://worldcreator-api.herokuapp.com/worldDB/' + explorer.id)
+            .then(
+                setReload(true, () => {
+                    setReload(false)
+                })
+            )
 
     }
 
@@ -30,7 +39,7 @@ function Folder({ explorer }) {
 
                 <div className="collapse row g-0" id={explorer.title.replace(' ', '') + "det"}>
                     <img className='col-2' src={explorer.imageUrl} alt='' />
-                    
+
                     <div className="card card-body col-10">
                         <p><small> {'Category: ' + explorer.category}</small></p>
                         <p><small> {"Date Added: " + explorer.dateAdded}</small></p>
