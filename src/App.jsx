@@ -161,7 +161,7 @@ function App() {
                 }
               }} />
             </div>
-            <p className="h6"> Edit a existing element </p>
+            <p className="container border shadow p-3 mb-5 bg-body rounded h6"> Edit a existing element </p>
           </div>
 
           <select
