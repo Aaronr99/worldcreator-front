@@ -23,6 +23,8 @@ class WorldElement {
 
 function App() {
 
+  const [reload, setReload] = useState(false)
+
   const [allElements, setAllElements] = useState([])
   const [elements, setElements] = useState([])
 
@@ -100,14 +102,18 @@ function App() {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      }).then(res => window.location.reload(false))
+      }).then(setReload(true, () => {
+        setReload(false)
+      }))
     }
     else {
       axios.post('https://worldcreator-api.herokuapp.com/worldDB', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      }).then(res => window.location.reload(false))
+      }).then(setReload(true, () => {
+        setReload(false)
+      }))
     }
   }
 
