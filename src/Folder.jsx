@@ -9,10 +9,12 @@ function Folder({ explorer }) {
 
     async function DeleteChar() {
         await axios.delete('https://worldcreator-api.herokuapp.com/worldDB/' + explorer.id)
-            .then(
+            .then((res) => {
+                console.log(res)
                 setReload(true, () => {
                     setReload(false)
                 })
+            }
             )
 
     }
