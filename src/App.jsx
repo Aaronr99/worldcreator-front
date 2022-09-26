@@ -152,23 +152,27 @@ function App() {
         <form>
           <div className="input-group mb-3">
             <div className="input-group-text">
-              <input className="form-check-input mt-0" type="checkbox" value={edit} onInput={(e) => {
+              <input className="form-check-input mt-0" type="checkbox" value={edit}
+              data-bs-toggle="collapse" data-bs-target="#id-edit-selection"
+              onInput={(e) => {
                 edit.current = e.target.checked ? true : false
                 if (toEdit !== '') {
                   loadOrUnloadValues(toEdit)
                 }
               }} />
             </div>
-            <select
-              className="form-select" id='parent-selection'
-              value={toEdit} onChange={(e) => {
-                setToEdit(e.target.value)
-                loadOrUnloadValues(e.target.value)
-              }}>
-              <option value=''>no one to edit</option>
-              {allElements.map(x => <option key={x._id} value={x._id}> {x.title}  </option>)}
-            </select>
+            <p className="h6"> Edit a existing element </p>
           </div>
+
+          <select
+            className="form-select collapse" id='id-edit-selection'
+            value={toEdit} onChange={(e) => {
+              setToEdit(e.target.value)
+              loadOrUnloadValues(e.target.value)
+            }}>
+            <option value=''>no one to edit</option>
+            {allElements.map(x => <option key={x._id} value={x._id}> {x.title}  </option>)}
+          </select>
 
           <div className="mb-3">
             <label htmlFor="textArea1" className="form-label h6"> Name </label>
