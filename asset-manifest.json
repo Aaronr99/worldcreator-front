@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/worldcreator-front/static/css/main.64e535d0.css",
-    "main.js": "/worldcreator-front/static/js/main.af7450b7.js",
+    "main.js": "/worldcreator-front/static/js/main.d9060a5d.js",
     "index.html": "/worldcreator-front/index.html",
     "main.64e535d0.css.map": "/worldcreator-front/static/css/main.64e535d0.css.map",
-    "main.af7450b7.js.map": "/worldcreator-front/static/js/main.af7450b7.js.map"
+    "main.d9060a5d.js.map": "/worldcreator-front/static/js/main.d9060a5d.js.map"
   },
   "entrypoints": [
     "static/css/main.64e535d0.css",
-    "static/js/main.af7450b7.js"
+    "static/js/main.d9060a5d.js"
   ]
 }
