@@ -236,7 +236,7 @@ function App() {
           </div>
 
           <div className="col-12">
-            <button className="btn btn-primary" type="button" onClick={putData}>Submit</button>
+            <button className="btn btn-primary" type="sumbit" onClick={putData}>Submit</button>
           </div>
         </form>
       </div>
